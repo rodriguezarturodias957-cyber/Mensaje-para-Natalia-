@@ -9,64 +9,56 @@
     body {
       margin: 0; padding: 20px; min-height: 100vh;
       display: flex; justify-content: center; align-items: center;
-      background: linear-gradient(135deg, #1e1b4b, #0f172a, #311042);
+      background: linear-gradient(135deg, #0f172a, #1e1b4b, #2e1065);
       color: #f8fafc; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
     .card {
-      max-width: 500px; width: 100%; padding: 25px;
-      background-color: rgba(30, 41, 59, 0.95); border-radius: 20px;
-      border: 2px solid #a855f7; text-align: center;
-      box-shadow: 0 10px 30px rgba(168, 85, 247, 0.2);
+      max-width: 480px; width: 100%; padding: 25px;
+      background: rgba(30, 41, 59, 0.95); border-radius: 24px;
+      border: 2px solid #c084fc; text-align: center;
+      box-shadow: 0 15px 35px rgba(192, 132, 252, 0.25);
     }
     .characters {
-      display: flex; justify-content: space-around; align-items: center;
-      margin-bottom: 20px; font-size: 2.8rem;
+      display: flex; justify-content: center; align-items: center;
+      gap: 20px; margin-bottom: 20px;
     }
-    .char-box {
-      display: flex; flex-direction: column; align-items: center;
+    .char-img {
+      width: 80px; height: 80px; object-fit: contain;
+      filter: drop-shadow(0 4px 8px rgba(0,0,0,0.4));
       transition: transform 0.3s ease;
     }
-    .char-box:hover { transform: scale(1.15); }
-    .char-label {
-      font-size: 0.75rem; color: #c084fc; margin-top: 4px; font-weight: bold;
-    }
+    .char-img:hover { transform: scale(1.15) rotate(4deg); }
     .morse {
-      font-family: monospace; font-size: 0.85rem; color: #cbd5e1;
+      font-family: 'Courier New', Courier, monospace; font-size: 0.88rem; color: #cbd5e1;
       letter-spacing: 2px; word-break: break-word; line-height: 1.6;
-      margin-bottom: 20px; background: rgba(15, 23, 42, 0.6);
-      padding: 15px; border-radius: 12px; border: 1px dashed #64748b;
+      margin-bottom: 20px; background: rgba(15, 23, 42, 0.7);
+      padding: 16px; border-radius: 14px; border: 1px dashed #64748b;
     }
     .btn {
-      background: linear-gradient(90deg, #ec4899, #8b5cf6);
-      color: #ffffff; border: none; padding: 12px 25px;
+      background: linear-gradient(90deg, #ec4899, #a855f7);
+      color: #ffffff; border: none; padding: 12px 28px;
       font-size: 1rem; font-weight: bold; border-radius: 25px;
       cursor: pointer; box-shadow: 0 4px 15px rgba(236, 72, 153, 0.4);
+      transition: transform 0.2s;
     }
+    .btn:active { transform: scale(0.95); }
     #translation {
       display: none; margin-top: 20px; padding-top: 20px;
-      border-top: 2px dashed #a855f7; font-size: 1rem;
+      border-top: 2px dashed #c084fc; font-size: 0.98rem;
       line-height: 1.7; color: #f1f5f9; text-align: justify;
     }
     .heart-icon { color: #ec4899; display: inline-block; animation: pulse 1.5s infinite; }
-    @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.2); } }
+    @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.25); } }
   </style>
 </head>
 <body>
   <div class="card">
-    <!-- Personajes listos que nunca se caen -->
+    <!-- Personajes reales en HD -->
     <div class="characters">
-      <div class="char-box">
-        <span>🎀🐱</span>
-        <span class="char-label">Hello Kitty</span>
-      </div>
-      <div class="char-box">
-        <span>😈🐰</span>
-        <span class="char-label">Kuromi</span>
-      </div>
-      <div class="char-box">
-        <span>🦖💛</span>
-        <span class="char-label">Nailong</span>
-      </div>
+      <img class="char-img" src="https://upload.wikimedia.org/wikipedia/en/0/05/Hello_kitty_character_art.png" alt="Hello Kitty">
+      <img class="char-img" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png" style="display:none;" alt="">
+      <img class="char-img" src="https://api.iconify.design/logos:kuromi.svg" onerror="this.src='https://cdn-icons-png.flaticon.com/512/3081/3081840.png'" alt="Kuromi">
+      <img class="char-img" src="https://cdn-icons-png.flaticon.com/512/2593/2593215.png" alt="Nailong Dinosaurio">
     </div>
 
     <div class="morse">
@@ -76,7 +68,7 @@
     <button class="btn" id="btn" onclick="document.getElementById('translation').style.display='block'; this.style.display='none';">✨ Ver traducción ✨</button>
 
     <div id="translation">
-      No, no pienso pasar de página. Te daré espacio y mantendré distancia, pero estaré aquí esperando a que encuentres el camino para volver. Te hice una promesa de que te amaría por y para siempre, y no es algo que dije en vano. Sigo confiando en que nuestra historia no ha acabado. Confío en Dios y nosotros. <span class="heart-icon">💖</span>
+      No, no pienso pasar de página. Te daré espacio y mantendré distancia, pero estaré aquí esperando a que encuentres el camino para volver. Te hice una promesa de que te amaría por y para siempre, y no es algo que dije en vano. Sigo confiando en que nuestra historia no ha acabado. Confío en Dios y nosotros. <span class="heart-icon">🤎🫀</span>
     </div>
   </div>
 </body>
