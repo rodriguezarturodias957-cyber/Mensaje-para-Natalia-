@@ -1,1 +1,43 @@
-
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mensaje para Natalia</title>
+  <style>
+    body {
+      margin: 0; padding: 20px; min-height: 100vh;
+      display: flex; justify-content: center; align-items: center;
+      background-color: #0f172a; color: #f8fafc; font-family: sans-serif;
+    }
+    .card {
+      max-width: 500px; width: 100%; padding: 25px;
+      background-color: #1e293b; border-radius: 12px;
+      border: 1px solid #334155; text-align: center;
+    }
+    .morse {
+      font-family: monospace; font-size: 0.9rem; color: #94a3b8;
+      letter-spacing: 2px; word-break: break-word; line-height: 1.6; margin-bottom: 20px;
+    }
+    .btn {
+      background-color: #3b82f6; color: #ffffff; border: none;
+      padding: 12px 20px; font-size: 1rem; border-radius: 8px; cursor: pointer;
+    }
+    #translation {
+      display: none; margin-top: 20px; padding-top: 20px;
+      border-top: 1px solid #334155; font-size: 1rem; line-height: 1.6; color: #e2e8f0;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="morse">
+      -. --- / -. --- / .--. .. . -. ... --- / .--. .- ... .- .-. / -.. . / .--. .- --. .. -. .- / - . / -.. .- .-. . / . ... .--. .- -.-. .. --- / -.-- / -- .- -. - . -. -.. .-. . / -.. .. ... - .- -. -.-. .. .- / .--. . .-. --- / . ... - .- .-. . / .- --.- ..- .. / . ... .--. . .-. .- -. -.. --- / .- / --.- ..- . / . -. -.-. ..- . -. - .-. . ... / . .-.. / -.-. .- -- .. -. --- / .--. .- .-. .- / ...- --- .-.. ...- . .-. / - . / .... .. -.-. . / ..- -. .- / .--. .-. --- -- . ... .- / -.. . / --.- ..- . / - . / .- -- .- .-. .. .- / .--. --- .-. / -.-- / .--. .- .-. .- / ... .. . -- .--. .-. . / -.-- / -. --- / . ... / .- .-.. --. --- / --.- ..- . / -.. .. .--- . / . -. / ...- .- -. --- / ... .. --. --- / -.-. --- -. ..-. .. --- / . -. / --.- ..- . / -. ..- . ... - .-. .- / .... .. ... - --- .-. .. .- / -. --- / .... .- / .- -.-. .- -... .- -.. --- / -.-. --- -. ..-. .. --- / . -. / -.. .. --- ... / -.-- / -. --- ... --- - .-. --- ...
+    </div>
+    <button class="btn" id="btn" onclick="document.getElementById('translation').style.display='block'; this.style.display='none';">Ver traducción</button>
+    <div id="translation">
+      No, no pienso pasar de página. Te daré espacio y mantendré distancia, pero estaré aquí esperando a que encuentres el camino para volver. Te hice una promesa de que te amaría por y para siempre, y no es algo que dije en vano. Sigo confiando en que nuestra historia no ha acabado. Confío en Dios y nosotros.
+    </div>
+  </div>
+</body>
+</html>
