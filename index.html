@@ -9,67 +9,118 @@
     body {
       margin: 0; padding: 20px; min-height: 100vh;
       display: flex; justify-content: center; align-items: center;
-      background: linear-gradient(135deg, #0f172a, #1e1b4b, #2e1065);
+      background: linear-gradient(135deg, #0f172a, #2e1065, #3b0764);
       color: #f8fafc; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      overflow-x: hidden; position: relative;
     }
+
+    /* Corazones flotantes de fondo */
+    .bg-hearts {
+      position: absolute; width: 100%; height: 100%;
+      top: 0; left: 0; pointer-events: none; overflow: hidden; z-index: 1;
+    }
+    .heart {
+      position: absolute; bottom: -100px; color: rgba(236, 72, 153, 0.3);
+      font-size: 24px; animation: floatUp 8s infinite linear;
+    }
+    .heart:nth-child(1) { left: 10%; animation-delay: 0s; font-size: 20px; }
+    .heart:nth-child(2) { left: 25%; animation-delay: 2s; font-size: 32px; }
+    .heart:nth-child(3) { left: 50%; animation-delay: 4s; font-size: 18px; }
+    .heart:nth-child(4) { left: 70%; animation-delay: 1s; font-size: 28px; }
+    .heart:nth-child(5) { left: 85%; animation-delay: 3s; font-size: 24px; }
+
+    @keyframes floatUp {
+      0% { transform: translateY(0) rotate(0deg); opacity: 0.8; }
+      100% { transform: translateY(-120vh) rotate(360deg); opacity: 0; }
+    }
+
+    /* Tarjeta principal */
     .card {
-      max-width: 480px; width: 100%; padding: 25px;
-      background: rgba(30, 41, 59, 0.95); border-radius: 24px;
-      border: 2px solid #c084fc; text-align: center;
-      box-shadow: 0 15px 35px rgba(192, 132, 252, 0.25);
+      max-width: 480px; width: 100%; padding: 30px 25px;
+      background: rgba(30, 41, 59, 0.85); backdrop-filter: blur(10px);
+      border-radius: 24px; border: 2px solid rgba(236, 72, 153, 0.4);
+      text-align: center; box-shadow: 0 15px 35px rgba(236, 72, 153, 0.2);
+      position: relative; z-index: 2;
     }
-    .characters {
-      display: flex; justify-content: center; align-items: center;
-      gap: 20px; margin-bottom: 20px;
+
+    .title-hearts {
+      font-size: 2.2rem; margin-bottom: 15px; display: block;
     }
-    .char-img {
-      width: 80px; height: 80px; object-fit: contain;
-      filter: drop-shadow(0 4px 8px rgba(0,0,0,0.4));
-      transition: transform 0.3s ease;
-    }
-    .char-img:hover { transform: scale(1.15) rotate(4deg); }
+
     .morse {
       font-family: 'Courier New', Courier, monospace; font-size: 0.88rem; color: #cbd5e1;
       letter-spacing: 2px; word-break: break-word; line-height: 1.6;
-      margin-bottom: 20px; background: rgba(15, 23, 42, 0.7);
-      padding: 16px; border-radius: 14px; border: 1px dashed #64748b;
+      margin-bottom: 25px; background: rgba(15, 23, 42, 0.7);
+      padding: 18px; border-radius: 16px; border: 1px dashed rgba(236, 72, 153, 0.3);
     }
+
     .btn {
       background: linear-gradient(90deg, #ec4899, #a855f7);
-      color: #ffffff; border: none; padding: 12px 28px;
-      font-size: 1rem; font-weight: bold; border-radius: 25px;
-      cursor: pointer; box-shadow: 0 4px 15px rgba(236, 72, 153, 0.4);
-      transition: transform 0.2s;
+      color: #ffffff; border: none; padding: 14px 30px;
+      font-size: 1.05rem; font-weight: bold; border-radius: 30px;
+      cursor: pointer; box-shadow: 0 4px 20px rgba(236, 72, 153, 0.5);
+      transition: transform 0.2s, box-shadow 0.2s;
     }
     .btn:active { transform: scale(0.95); }
+
     #translation {
-      display: none; margin-top: 20px; padding-top: 20px;
-      border-top: 2px dashed #c084fc; font-size: 0.98rem;
-      line-height: 1.7; color: #f1f5f9; text-align: justify;
+      display: none; margin-top: 25px; padding-top: 20px;
+      border-top: 2px dashed rgba(236, 72, 153, 0.4); font-size: 1rem;
+      line-height: 1.8; color: #f1f5f9; text-align: justify;
+      animation: fadeIn 1s ease;
     }
-    .heart-icon { color: #ec4899; display: inline-block; animation: pulse 1.5s infinite; }
-    @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.25); } }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .pulse-heart {
+      color: #ec4899; display: inline-block; animation: pulse 1.5s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.3); }
+    }
   </style>
 </head>
 <body>
+
+  <!-- Corazones animados de fondo -->
+  <div class="bg-hearts">
+    <div class="heart">💖</div>
+    <div class="heart">💗</div>
+    <div class="heart">💕</div>
+    <div class="heart">💖</div>
+    <div class="heart">💓</div>
+  </div>
+
   <div class="card">
-    <!-- Personajes reales en HD -->
-    <div class="characters">
-      <img class="char-img" src="https://upload.wikimedia.org/wikipedia/en/0/05/Hello_kitty_character_art.png" alt="Hello Kitty">
-      <img class="char-img" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png" style="display:none;" alt="">
-      <img class="char-img" src="https://api.iconify.design/logos:kuromi.svg" onerror="this.src='https://cdn-icons-png.flaticon.com/512/3081/3081840.png'" alt="Kuromi">
-      <img class="char-img" src="https://cdn-icons-png.flaticon.com/512/2593/2593215.png" alt="Nailong Dinosaurio">
-    </div>
+    <div class="title-hearts">💖✨💖</div>
 
     <div class="morse">
       -. --- / -. --- / .--. .. . -. ... --- / .--. .- ... .- .-. / -.. . / .--. .- --. .. -. .- / - . / -.. .- .-. . / . ... .--. .- -.-. .. --- / -.-- / -- .- -. - . -. -.. .-. . / -.. .. ... - .- -. -.-. .. .- / .--. . .-. --- / . ... - .- .-. . / .- --.- ..- .. / . ... .--. . .-. .- -. -.. --- / .- / --.- ..- . / . -. -.-. ..- . -. - .-. . ... / . .-.. / -.-. .- -- .. -. --- / .--. .- .-. .- / ...- --- .-.. ...- . .-. / - . / .... .. -.-. . / ..- -. .- / .--. .-. --- -- . ... .- / -.. . / --.- ..- . / - . / .- -- .- .-. .. .- / .--. --- .-. / -.-- / .--. .- .-. .- / ... .. . -- .--. .-. . / -.-- / -. --- / . ... / .- .-.. --. --- / --.- ..- . / -.. .. .--- . / . -. / ...- .- -. --- / ... .. --. --- / -.-. --- -. ..-. .. --- / . -. / --.- ..- . / -. ..- . ... - .-. .- / .... .. ... - --- .-. .. .- / -. --- / .... .- / .- -.-. .- -... .- -.. --- / -.-. --- -. ..-. .. --- / . -. / -.. .. --- ... / -.-- / -. --- ... --- - .-. --- ...
     </div>
 
-    <button class="btn" id="btn" onclick="document.getElementById('translation').style.display='block'; this.style.display='none';">✨ Ver traducción ✨</button>
+    <button class="btn" id="btn" onclick="revealAndPlay()">✨ Ver traducción ✨</button>
 
     <div id="translation">
-      No, no pienso pasar de página. Te daré espacio y mantendré distancia, pero estaré aquí esperando a que encuentres el camino para volver. Te hice una promesa de que te amaría por y para siempre, y no es algo que dije en vano. Sigo confiando en que nuestra historia no ha acabado. Confío en Dios y nosotros. <span class="heart-icon">🤎🫀</span>
+      No, no pienso pasar de página. Te daré espacio y mantendré distancia, pero estaré aquí esperando a que encuentres el camino para volver. Te hice una promesa de que te amaría por y para siempre, y no es algo que dije en vano. Sigo confiando en que nuestra historia no ha acabado. Confío en Dios y nosotros. <span class="pulse-heart">🤎🫀</span>
     </div>
   </div>
+
+  <!-- Audio de fondo (Piano romántico) -->
+  <audio id="bgMusic" loop src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=romantic-piano-112282.mp3"></audio>
+
+  <script>
+    function revealAndPlay() {
+      document.getElementById('translation').style.display = 'block';
+      document.getElementById('btn').style.display = 'none';
+      var music = document.getElementById('bgMusic');
+      music.play().catch(function(error) {
+        console.log("El navegador bloqueó el audio automático: " + error);
+      });
+    }
+  </script>
 </body>
 </html>
