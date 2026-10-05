@@ -5,38 +5,70 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mensaje para Natalia</title>
   <style>
+    * { box-sizing: border-box; }
     body {
       margin: 0; padding: 20px; min-height: 100vh;
       display: flex; justify-content: center; align-items: center;
-      background-color: #0f172a; color: #f8fafc; font-family: sans-serif;
+      background: linear-gradient(135deg, #1e1b4b, #0f172a, #311042);
+      color: #f8fafc; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
     .card {
       max-width: 500px; width: 100%; padding: 25px;
-      background-color: #1e293b; border-radius: 12px;
-      border: 1px solid #334155; text-align: center;
+      background-color: rgba(30, 41, 59, 0.95); border-radius: 20px;
+      border: 2px solid #a855f7; text-align: center;
+      box-shadow: 0 10px 30px rgba(168, 85, 247, 0.2);
+      position: relative; overflow: hidden;
     }
+    .characters {
+      display: flex; justify-content: space-around; align-items: center;
+      margin-bottom: 20px; flex-wrap: wrap; gap: 10px;
+    }
+    .char-img {
+      width: 75px; height: 75px; object-fit: contain;
+      filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3));
+      transition: transform 0.3s ease;
+    }
+    .char-img:hover { transform: scale(1.15) rotate(5deg); }
     .morse {
-      font-family: monospace; font-size: 0.9rem; color: #94a3b8;
-      letter-spacing: 2px; word-break: break-word; line-height: 1.6; margin-bottom: 20px;
+      font-family: monospace; font-size: 0.85rem; color: #cbd5e1;
+      letter-spacing: 2px; word-break: break-word; line-height: 1.6;
+      margin-bottom: 20px; background: rgba(15, 23, 42, 0.6);
+      padding: 15px; border-radius: 12px; border: 1px dashed #64748b;
     }
     .btn {
-      background-color: #3b82f6; color: #ffffff; border: none;
-      padding: 12px 20px; font-size: 1rem; border-radius: 8px; cursor: pointer;
+      background: linear-gradient(90deg, #ec4899, #8b5cf6);
+      color: #ffffff; border: none; padding: 12px 25px;
+      font-size: 1rem; font-weight: bold; border-radius: 25px;
+      cursor: pointer; box-shadow: 0 4px 15px rgba(236, 72, 153, 0.4);
+      transition: transform 0.2s, box-shadow 0.2s;
     }
+    .btn:active { transform: scale(0.95); }
     #translation {
       display: none; margin-top: 20px; padding-top: 20px;
-      border-top: 1px solid #334155; font-size: 1rem; line-height: 1.6; color: #e2e8f0;
+      border-top: 2px dashed #a855f7; font-size: 1rem;
+      line-height: 1.7; color: #f1f5f9; text-align: justify;
     }
+    .heart-icon { color: #ec4899; display: inline-block; animation: pulse 1.5s infinite; }
+    @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.2); } }
   </style>
 </head>
 <body>
   <div class="card">
+    <!-- Personajes: Hello Kitty, Kuromi y Nailong -->
+    <div class="characters">
+      <img class="char-img" src="https://upload.wikimedia.org/wikipedia/en/0/05/Hello_kitty_character_art.png" alt="Hello Kitty">
+      <img class="char-img" src="https://i.ibb.co/L5Bf4k9/kuromi.png" alt="Kuromi">
+      <img class="char-img" src="https://i.ibb.co/h0yY6XQ/nailong.png" alt="Nailong">
+    </div>
+
     <div class="morse">
       -. --- / -. --- / .--. .. . -. ... --- / .--. .- ... .- .-. / -.. . / .--. .- --. .. -. .- / - . / -.. .- .-. . / . ... .--. .- -.-. .. --- / -.-- / -- .- -. - . -. -.. .-. . / -.. .. ... - .- -. -.-. .. .- / .--. . .-. --- / . ... - .- .-. . / .- --.- ..- .. / . ... .--. . .-. .- -. -.. --- / .- / --.- ..- . / . -. -.-. ..- . -. - .-. . ... / . .-.. / -.-. .- -- .. -. --- / .--. .- .-. .- / ...- --- .-.. ...- . .-. / - . / .... .. -.-. . / ..- -. .- / .--. .-. --- -- . ... .- / -.. . / --.- ..- . / - . / .- -- .- .-. .. .- / .--. --- .-. / -.-- / .--. .- .-. .- / ... .. . -- .--. .-. . / -.-- / -. --- / . ... / .- .-.. --. --- / --.- ..- . / -.. .. .--- . / . -. / ...- .- -. --- / ... .. --. --- / -.-. --- -. ..-. .. --- / . -. / --.- ..- . / -. ..- . ... - .-. .- / .... .. ... - --- .-. .. .- / -. --- / .... .- / .- -.-. .- -... .- -.. --- / -.-. --- -. ..-. .. --- / . -. / -.. .. --- ... / -.-- / -. --- ... --- - .-. --- ...
     </div>
-    <button class="btn" id="btn" onclick="document.getElementById('translation').style.display='block'; this.style.display='none';">Ver traducción</button>
+
+    <button class="btn" id="btn" onclick="document.getElementById('translation').style.display='block'; this.style.display='none';">✨ Ver traducción ✨</button>
+
     <div id="translation">
-      No, no pienso pasar de página. Te daré espacio y mantendré distancia, pero estaré aquí esperando a que encuentres el camino para volver. Te hice una promesa de que te amaría por y para siempre, y no es algo que dije en vano. Sigo confiando en que nuestra historia no ha acabado. Confío en Dios y nosotros.
+      No, no pienso pasar de página. Te daré espacio y mantendré distancia, pero estaré aquí esperando a que encuentres el camino para volver. Te hice una promesa de que te amaría por y para siempre, y no es algo que dije en vano. Sigo confiando en que nuestra historia no ha acabado. Confío en Dios y nosotros. <span class="heart-icon">💖</span>
     </div>
   </div>
 </body>
